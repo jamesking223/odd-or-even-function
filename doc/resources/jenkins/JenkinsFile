@@ -1,6 +1,6 @@
 node {
-    withEnv(['AZURE_SUBSCRIPTION_ID=99999999-9999-9999-9999-999999999999',
-            'AZURE_TENANT_ID=99999999-9999-9999-9999-999999999999']) {
+    withEnv(['AZURE_SUBSCRIPTION_ID=a1a941a7-372b-4742-abaa-1f0c40061585',
+            'AZURE_TENANT_ID=d929d0d3-f141-4f84-98c6-62fddae010c8']) {
         stage('Init') {
             cleanWs()
             checkout scm
@@ -11,8 +11,8 @@ node {
         }
 
         stage('Publish') {
-            def RESOURCE_GROUP = '<resource_group>' 
-            def FUNC_NAME = '<function_app>'
+            def RESOURCE_GROUP = 'jenkins-get-started-rg' 
+            def FUNC_NAME = 'james-fncapp01'
             // login Azure
             withCredentials([usernamePassword(credentialsId: 'azuresp', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
             sh '''
